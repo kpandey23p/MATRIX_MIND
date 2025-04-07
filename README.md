@@ -19,3 +19,18 @@ This model builds a recommendation system that returns the **top 10 product reco
 - Uses Truncated SVD on the user-item rating matrix.
 - Generates top-N items for a user based on latent factor scores.
 - ASINs are mapped to product titles using metadata.
+
+---
+## 🧠 Model A: Masked Matrix
+This model evaluates the accuracy of SVD-based predictions using a test set derived by randomly masking known user-item interactions.
+
+### ⚙️ How It Works
+
+- Loads the user-item rating matrix.
+- Randomly masks 20% of known entries.
+- Trains SVD on the masked matrix.
+- Predicts masked entries and evaluates performance using:
+
+     -Hit Ratio
+     -MSE
+     -Precision(exact_match_acuracy) 
