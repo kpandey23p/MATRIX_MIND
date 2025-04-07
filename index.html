@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Recommender</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(90, 33, 33, 0.1);
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #e9ecef;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Product Recommender</h1>
+    <input type="text" id="userIdInput" placeholder="Enter User ID">
+    <button onclick="getRecommendations()">Get Recommendations</button>
+    <h2>Top 10 Products:</h2>
+    <ul id="recommendationsList"></ul>
+  </div>
+
+  <script>
+    async function getRecommendations() {
+      const userId = document.getElementById("userIdInput").value.trim();
+      const list = document.getElementById("recommendationsList");
+      list.innerHTML = "";
+
+      if (!userId) {
+        alert("Please enter a User ID.");
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/recommend?user_id=${userId}`);
+        const data = await response.json();
+
+        if (data.detail) {
+          list.innerHTML = `<li style="color:red;">${data.detail}</li>`;
+        } else {
+          data.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = `${item.title} (ASIN: ${item.asin})`;
+            list.appendChild(li);
+          });
+        }
+      } catch (err) {
+        list.innerHTML = `<li style="color:red;">Error fetching data.</li>`;
+      }
+    }
+  </script>
+</body>
+</html>
