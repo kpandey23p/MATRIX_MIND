@@ -33,4 +33,10 @@ This model evaluates the accuracy of SVD-based predictions using a test set deri
 
      -Hit Ratio
      -MSE
-     -Precision(exact_match_acuracy) 
+     -Precision(exact_match_acuracy)
+
+
+---
+**DATASET USED**
+-review data-https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Appliances.jsonl.gz
+-metadata-https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/meta_categories/meta_Appliances.jsonl.gz
