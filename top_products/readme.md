@@ -1,9 +1,9 @@
 title: SVD Recommender System
 
 sections:
-  - heading: 🚀 How to Run Model A (SVD Recommender API)
+  -  🚀 How to Run Model A (SVD Recommender API)
     steps:
-      - title: 1️⃣ Train the Model
+      -  1️⃣ Train the Model
         description: |
           Run the following script to train the SVD model and generate required files:
         code: |
@@ -14,7 +14,7 @@ sections:
           - item_map.pkl – Mapping of ASINs to matrix indices
           - meta_df.pkl – ASIN to product title metadata
 
-      - title: 2️⃣ Start the API Server
+      -  2️⃣ Start the API Server
         description: |
           Launch the FastAPI backend with:
         code: |
@@ -24,7 +24,7 @@ sections:
       - title: 3️⃣ Access the Frontend
         description: |
           Open the `index.html` file in your browser:
-          - Enter a valid user ID (from your dataset)
+          - Enter a valid user ID (from the dataset)
           - Click "Get Recommendations"
           - See the top 10 recommended products with titles
 
